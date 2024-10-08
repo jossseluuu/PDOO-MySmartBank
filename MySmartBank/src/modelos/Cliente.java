@@ -14,7 +14,7 @@ public class Cliente{
     private int numeroIdentificacionCliente;
     private String documentoNacionaldeIdentidad;
     private String nombreCompleto;
-    private enum Genero{ Masculino,Femenino};
+    private String genero;
     private String fechaNacimiento;    
     private int edadActual;
     private enum nacionalidadPrincipal{España, Francia, Portugal, Italia, Otro};
@@ -30,7 +30,20 @@ public class Cliente{
     public int numeroTarjetasFisicas;
     
     //Constructores
-    
+    public Cliente(int numeroIdentificacionCliente, String documentoNacionaldeIdentidad, String nombreCompleto, String genero, String fechaNacimiento, int edadActual){
+        this.numeroIdentificacionCliente = numeroIdentificacionCliente;
+        this.documentoNacionaldeIdentidad = documentoNacionaldeIdentidad;
+        this.nombreCompleto = nombreCompleto;
+        this.genero = genero;
+        this.fechaNacimiento = fechaNacimiento;
+        this.edadActual = edadActual;
+    }
+    public Cliente(){
+        this(numeroIdentificacionCliente, documentoNacionaldeIdentidad, nombreCompleto, genero);
+    }
+    public Cliente(Cliente otro){
+        this(otro.numeroIdentificacionCliente, otro.documentoNacionaldeIdentidad, otro.nombreCompleto, otro.genero);
+    }
     //Getters y Setters
     
     //Otros Métodos
