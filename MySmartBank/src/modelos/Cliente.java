@@ -30,6 +30,7 @@ public class Cliente{
     public int numeroTarjetasFisicas;
     
     //Constructores
+/*
     public Cliente(int numeroIdentificacionCliente, String documentoNacionaldeIdentidad, String nombreCompleto, String genero, String fechaNacimiento, int edadActual){
         this.numeroIdentificacionCliente = numeroIdentificacionCliente;
         this.documentoNacionaldeIdentidad = documentoNacionaldeIdentidad;
@@ -44,6 +45,8 @@ public class Cliente{
     public Cliente(Cliente otro){
         this(otro.numeroIdentificacionCliente, otro.documentoNacionaldeIdentidad, otro.nombreCompleto, otro.genero);
     }
+*/
+
     //Getters y Setters
     
     //Otros Métodos

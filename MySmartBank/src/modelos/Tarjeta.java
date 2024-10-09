@@ -43,6 +43,7 @@ public class Tarjeta{
     /// ------------------------------------------------ ///
     
     // Constructor Paramétrico TODO
+/*
     public Tarjeta(String imagenPropia, int numeroTarjetaIdentificacion, String tipoTarjeta, String categoriaTarjeta, String nombreTitular, boolean tarjetaActiva, String estadoTarjeta, String fechaCreacion, String fechaExpiracion, int numeroCVV, int numeroMovimientos, int numeroPIN, int numeroMovimientos){
         this.imagenPropia = imagenPropia;
         this.numeroTarjetaIdentificacion = numeroTarjetaIdentificacion;
@@ -65,14 +66,14 @@ public class Tarjeta{
     
     // Constructor Copia
     public Tarjeta(Tarjeta copia){
-        this(copia.numeroTarjetaIdentificacion, copia.tipoTarjeta, copia.categoriaTarjeta, copia.nombreTitular, copia.tarjetaActiva, copia.estadoTarjeta, copia.fechaCreacion, copia.fechaExpiracion, copia.numeroCVV, copia.numeroPIN);
+        this(copia.imagenPropia, copia.numeroTarjetaIdentificacion, copia.tipoTarjeta, copia.categoriaTarjeta,  );
     }
-
+*/
     /// ------------------------------------------------ ///
     ///                Getters y Setters                 ///
     /// ------------------------------------------------ ///
     
-    //Setters
+    //Setters de la Clase
     public void setImagenPropia(String imagenPropia){
         this.imagenPropia = imagenPropia;
     }
@@ -110,7 +111,15 @@ public class Tarjeta{
         this.numeroMovimientos = numeroMovimientos;
     }
     
-    //Getters
+    //Setters de la Instancia
+    public void setnumeroIntentosPIN(int  nuevo_numeroIntentosPIN){
+        numeroIntentosPIN = nuevo_numeroIntentosPIN;
+    }
+    public int getnumeroIntentosPIN(){
+        return numeroIntentosPIN;
+    }
+    
+    //Getters de la Clase
     public String getImagenPropia(){
         return imagenPropia;
     }
