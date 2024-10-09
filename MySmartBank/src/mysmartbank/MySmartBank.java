@@ -63,6 +63,8 @@ public class MySmartBank {
         System.out.print(Cuenta_Numero3.getTipoCuenta() + " ");
         System.out.print(Cuenta_Numero3.getFechaAperturaCuenta() + " ");
         System.out.print(Cuenta_Numero3.getEstadoCuenta() + " ");
+        
+        System.out.println("Push");
     }
     
 }
