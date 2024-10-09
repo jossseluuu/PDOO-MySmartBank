@@ -85,7 +85,7 @@ public class Cuenta {
             System.out.println("El tipo de cuenta no es correcto.");
         }
     }
-    public void setfechaAperturaCuenta(String fechaAperturaCuenta){
+    public void setFechaAperturaCuenta(String fechaAperturaCuenta){
         this.fechaAperturaCuenta = fechaAperturaCuenta;
     }
     public void setEstadoCuenta(boolean estadoCuenta){
@@ -105,7 +105,7 @@ public class Cuenta {
     public String getTipoCuenta(){
         return tipoCuenta;
     }
-    public String getfechaAperturaCuenta(){
+    public String getFechaAperturaCuenta(){
         return fechaAperturaCuenta;
     }
     public boolean getEstadoCuenta(){
