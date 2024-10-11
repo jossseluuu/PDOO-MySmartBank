@@ -62,6 +62,9 @@ public class MySmartBank {
         System.out.print(Cuenta_Numero3.getFechaAperturaCuenta() + " ");
         System.out.println(Cuenta_Numero3.getEstadoCuenta() + " ");
         
+        // Realizamos un toString para ver los atributos de un objeto.
+        System.out.println(Cuenta_Numero2.toString());
+        
         
     }
     

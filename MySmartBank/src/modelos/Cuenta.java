@@ -17,13 +17,13 @@ public class Cuenta {
     /// ------------------------------------------------ ///
     
     // Atributos de Clase
-    private static String iconoCuenta = "/img/cuentalogo.png";
+    private static String ICONOCUENTABANCARIA = "/img/cuentalogo.png";
     private static int numeroCuentasBancariasTotales = 0;
     private static double saldoTotal = 0;
     private static double interesesRecibidosBanco = 0;
-    private static double tasaInteresCuentaCorriente = 0.35;
-    private static double tasaInteresCuentaOnline = 0.20;
-    private static double tasaInteresCuentaRemunerada = -0.15;
+    private static double TASAINTERESCUENTACORRIENTE = 0.35;
+    private static double TASAINTERESCUENTAONLINE = 0.20;
+    private static double TASAINTERESCUENTAREMUNERADA = -0.15;
 
     // Atributos de Instancia
     private String numeroIdentificacion;
@@ -61,13 +61,13 @@ public class Cuenta {
         numeroCuentasBancariasTotales++;
         saldoTotal += saldo;
         if(tipoCuentaBancaria == TipoCuenta.CORRIENTE){
-            tasaInteresCuenta = tasaInteresCuentaCorriente;
+            tasaInteresCuenta = TASAINTERESCUENTACORRIENTE;
         }
         else if(tipoCuentaBancaria == TipoCuenta.ONLINE){
-            tasaInteresCuenta = tasaInteresCuentaOnline;
+            tasaInteresCuenta = TASAINTERESCUENTAONLINE;
         }
         else if(tipoCuentaBancaria == TipoCuenta.REMUNERADA){
-            tasaInteresCuenta = tasaInteresCuentaRemunerada;
+            tasaInteresCuenta = TASAINTERESCUENTAREMUNERADA;
         }
         else{
             tasaInteresCuenta = 0;
@@ -93,22 +93,22 @@ public class Cuenta {
     public void setNumeroIdentificacion(String numeroIdentificacion){
         if(numeroIdentificacion.length() >= 1 && numeroIdentificacion.length() <= 10){
             this.numeroIdentificacion = "ES25 4769 7891 36 " + numeroIdentificacion;
-            System.out.println("El número de cuenta ha sido creado de forma correcta.");
+            System.out.println("El numero de cuenta ha sido creado de forma correcta.");
         }
         else{
-            System.out.println("El número de cuenta que desea ingresar es incorrecto. Tenga en cuenta que debe tener entre 1 y 10 números.");
+            System.out.println("El numero de cuenta que desea ingresar es incorrecto. Tenga en cuenta que debe tener entre 1 y 10 digitos.");
         }
     }
     public void setTipoCuentaBancaria(TipoCuenta tipoCuentaBancaria){
         this.tipoCuentaBancaria = tipoCuentaBancaria;
         if(tipoCuentaBancaria == TipoCuenta.CORRIENTE){
-            tasaInteresCuenta = tasaInteresCuentaCorriente;
+            tasaInteresCuenta = TASAINTERESCUENTACORRIENTE;
         }
         else if(tipoCuentaBancaria == TipoCuenta.ONLINE){
-            tasaInteresCuenta = tasaInteresCuentaOnline;
+            tasaInteresCuenta = TASAINTERESCUENTAONLINE;
         }
         else if(tipoCuentaBancaria == TipoCuenta.REMUNERADA){
-            tasaInteresCuenta = tasaInteresCuentaRemunerada;
+            tasaInteresCuenta = TASAINTERESCUENTAREMUNERADA;
         }
         else{
             tasaInteresCuenta = 0;
@@ -118,18 +118,18 @@ public class Cuenta {
     public void setEstadoCuenta(boolean estadoCuenta){
         if(estadoCuenta == true){
             this.estadoCuenta = true;
-            System.out.println("La cuenta está activada.");
+            System.out.println("La cuenta esta activada.");
         }
         else if (estadoCuenta == false){
             this.estadoCuenta = false;
-            System.out.println("La cuenta está desactivada.");
+            System.out.println("La cuenta esta desactivada.");
         } 
         else{
             System.out.println("El estado de cuenta introducido es incorrecto. ");
         }
     }
     public void setFechaAperturaCuenta(String fechaAperturaCuenta){
-        if(fechaAperturaCuenta.length() >= 1 && fechaAperturaCuenta.length() <= 10){
+        if(fechaAperturaCuenta.length() == 10){
             this.fechaAperturaCuenta = fechaAperturaCuenta;
         }
         else{
@@ -142,7 +142,7 @@ public class Cuenta {
             this.saldo = saldo;
         }
         else{
-            System.out.println("No está permitido abrir una cuenta bancaria teniendo deudas o un saldo inferior a cero.");
+            System.out.println("No esta permitido abrir una cuenta bancaria teniendo deudas o un saldo inferior a cero.");
         };
     }
     
@@ -163,6 +163,17 @@ public class Cuenta {
         return saldo;
     }
 
-    //Otros Métodos
+    // Método toString
+    public String toString() {
+        return "Cuenta{" +
+                "numeroIdentificacion='" + numeroIdentificacion + '\'' +
+                ", tipoCuentaBancaria='" + tipoCuentaBancaria + '\'' +
+                ", estadoCuenta=" + estadoCuenta +
+                ", fechaAperturaCuenta=" + fechaAperturaCuenta +
+                ", saldo=" + saldo +
+                '}';
+    }
+    
+    // Otros Métodos
      
 }
