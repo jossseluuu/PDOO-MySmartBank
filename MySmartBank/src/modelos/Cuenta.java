@@ -1,12 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package modelos;
+//
+//  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+//  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+// 
 
-/*
- * @author josel
-*/
+package modelos;
+import modelos.TipoCuenta;
+
+/// 
+/// @author josel
+/// 
 
 public class Cuenta {
     
@@ -14,21 +16,22 @@ public class Cuenta {
     ///       Atributos de Instancia y de la Clase       ///
     /// ------------------------------------------------ ///
     
-    // Atributos de Instancia
-    private static int numeroCuentasBancarias = 0;
+    // Atributos de Clase
+    private static String iconoCuenta = "/img/cuentalogo.png";
+    private static int numeroCuentasBancariasTotales = 0;
     private static double saldoTotal = 0;
-    private static double interesesRecibidos = 0;
+    private static double interesesRecibidosBanco = 0;
     private static double tasaInteresCuentaCorriente = 0.35;
     private static double tasaInteresCuentaOnline = 0.20;
     private static double tasaInteresCuentaRemunerada = -0.15;
-    
-    // Atributos de la Clase
+
+    // Atributos de Instancia
     private String numeroIdentificacion;
-    private String nombreTitular;
-    private int saldo;
-    private String tipoCuenta;
-    private String fechaAperturaCuenta;
+    private TipoCuenta tipoCuentaBancaria;
     private boolean estadoCuenta;
+    private String fechaAperturaCuenta;
+    private double saldo;
+    private double tasaInteresCuenta;
 
     
     /// ------------------------------------------------ ///
@@ -36,26 +39,50 @@ public class Cuenta {
     /// ------------------------------------------------ ///
     
     // Constructor Paramétrico
-    public Cuenta(String numeroIdentificacion, String nombreTitular, int saldo, String tipoCuenta, String fechaAperturaCuenta, boolean estadoCuenta){
-        this.numeroIdentificacion = numeroIdentificacion;
-        this.nombreTitular = nombreTitular;
-        this.saldo = saldo;
-        this.tipoCuenta = tipoCuenta;
-        this.fechaAperturaCuenta = fechaAperturaCuenta;
+    public Cuenta(String numeroIdentificacion, TipoCuenta tipoCuentaBancaria, boolean estadoCuenta, String fechaAperturaCuenta, double saldo){
+        // Asignación de los parámetros a las variables.
+        if(numeroIdentificacion.length() >= 1 && numeroIdentificacion.length() <= 10){
+            this.numeroIdentificacion = "ES25 4769 7891 36 " + numeroIdentificacion;
+        }
+
+        this.tipoCuentaBancaria = tipoCuentaBancaria;
+        
         this.estadoCuenta = estadoCuenta;
-        numeroCuentasBancarias++;
+        
+        if(fechaAperturaCuenta.length() >= 1 && fechaAperturaCuenta.length() <= 10){
+            this.fechaAperturaCuenta = fechaAperturaCuenta;
+        }
+        
+        if(saldo >= 0){
+            this.saldo = saldo;
+        }
+        
+        // Operaciones tras la asignación de parámetros.
+        numeroCuentasBancariasTotales++;
         saldoTotal += saldo;
+        if(tipoCuentaBancaria == TipoCuenta.CORRIENTE){
+            tasaInteresCuenta = tasaInteresCuentaCorriente;
+        }
+        else if(tipoCuentaBancaria == TipoCuenta.ONLINE){
+            tasaInteresCuenta = tasaInteresCuentaOnline;
+        }
+        else if(tipoCuentaBancaria == TipoCuenta.REMUNERADA){
+            tasaInteresCuenta = tasaInteresCuentaRemunerada;
+        }
+        else{
+            tasaInteresCuenta = 0;
+        }
         
     }
-    
+
     // Constructor Vacío
     public Cuenta(){
-        this("NONE", "NONE", 0, "NONE", "NONE", false);
+        this("0", TipoCuenta.POR_DETERMINAR, false, "Hoy", 0);
     }
-    
+
     // Constructor Copia
     public Cuenta(Cuenta copia){
-        this(copia.numeroIdentificacion, copia.nombreTitular, copia.saldo, copia.tipoCuenta, copia.fechaAperturaCuenta, copia.estadoCuenta);
+        this(copia.numeroIdentificacion, copia.tipoCuentaBancaria, copia.estadoCuenta, copia.fechaAperturaCuenta, copia.saldo);
     }
     
     /// ------------------------------------------------ ///
@@ -64,52 +91,76 @@ public class Cuenta {
 
     //Setters
     public void setNumeroIdentificacion(String numeroIdentificacion){
-        this.numeroIdentificacion = numeroIdentificacion;
+        if(numeroIdentificacion.length() >= 1 && numeroIdentificacion.length() <= 10){
+            this.numeroIdentificacion = "ES25 4769 7891 36 " + numeroIdentificacion;
+            System.out.println("El número de cuenta ha sido creado de forma correcta.");
+        }
+        else{
+            System.out.println("El número de cuenta que desea ingresar es incorrecto. Tenga en cuenta que debe tener entre 1 y 10 números.");
+        }
     }
-    public void setNombreTitular(String nombreTitular){
-        this.nombreTitular = nombreTitular;
+    public void setTipoCuentaBancaria(TipoCuenta tipoCuentaBancaria){
+        this.tipoCuentaBancaria = tipoCuentaBancaria;
+        if(tipoCuentaBancaria == TipoCuenta.CORRIENTE){
+            tasaInteresCuenta = tasaInteresCuentaCorriente;
+        }
+        else if(tipoCuentaBancaria == TipoCuenta.ONLINE){
+            tasaInteresCuenta = tasaInteresCuentaOnline;
+        }
+        else if(tipoCuentaBancaria == TipoCuenta.REMUNERADA){
+            tasaInteresCuenta = tasaInteresCuentaRemunerada;
+        }
+        else{
+            tasaInteresCuenta = 0;
+        }
+        
     }
-    public void setSaldo(int saldo){
+    public void setEstadoCuenta(boolean estadoCuenta){
+        if(estadoCuenta == true){
+            this.estadoCuenta = true;
+            System.out.println("La cuenta está activada.");
+        }
+        else if (estadoCuenta == false){
+            this.estadoCuenta = false;
+            System.out.println("La cuenta está desactivada.");
+        } 
+        else{
+            System.out.println("El estado de cuenta introducido es incorrecto. ");
+        }
+    }
+    public void setFechaAperturaCuenta(String fechaAperturaCuenta){
+        if(fechaAperturaCuenta.length() >= 1 && fechaAperturaCuenta.length() <= 10){
+            this.fechaAperturaCuenta = fechaAperturaCuenta;
+        }
+        else{
+            System.out.println("La fecha introducida se encuentra en el formato incorrecto.");
+        }
+        
+    }
+    public void setSaldo(double saldo){
         if(saldo >= 0){
             this.saldo = saldo;
         }
         else{
-            System.out.println("El saldo no puede ser negativo.");
-        }
-    }
-    public void setTipoCuenta(String tipoCuenta){
-        if(tipoCuenta.equals("Corriente") || tipoCuenta.equals("Online") || tipoCuenta.equals("Remunerada")){
-            this.tipoCuenta = tipoCuenta;
-        }
-        else{
-            System.out.println("El tipo de cuenta no es correcto.");
-        }
-    }
-    public void setFechaAperturaCuenta(String fechaAperturaCuenta){
-        this.fechaAperturaCuenta = fechaAperturaCuenta;
-    }
-    public void setEstadoCuenta(boolean estadoCuenta){
-        this.estadoCuenta = estadoCuenta;
+            System.out.println("No está permitido abrir una cuenta bancaria teniendo deudas o un saldo inferior a cero.");
+        };
     }
     
     //Getters
     public String getNumeroIdentificacion(){
         return numeroIdentificacion;
     }
-    public String getNombreTitular(){
-        return nombreTitular;
+    public TipoCuenta getTipoCuentaBancaria(){
+        return tipoCuentaBancaria;
     }
-    public int getSaldo(){
-        return saldo;
-    }
-    public String getTipoCuenta(){
-        return tipoCuenta;
+    public boolean getEstadoCuenta(){
+        return estadoCuenta;
     }
     public String getFechaAperturaCuenta(){
         return fechaAperturaCuenta;
     }
-    public boolean getEstadoCuenta(){
-        return estadoCuenta;
+    public double getSaldo(){
+        return saldo;
     }
 
     //Otros Métodos
