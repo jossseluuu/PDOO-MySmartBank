@@ -4,6 +4,7 @@
 // 
 
 package modelos;
+import java.util.Date;
 
 /**
  * @author josel
@@ -41,7 +42,7 @@ public class Cuenta {
         /** Estado de la Cuenta Bancaria. Indica el estado de la cuenta, únicamente determinará si se encuentra disponible(1) o no disponible (0). */
         private boolean estadoCuenta;
         /** Fecha de Apertura. [POR DETERMINAR]. */
-        private String fechaAperturaCuenta;
+        private Date fechaAperturaCuenta;
         /** Saldo de la Cuenta. Indica el saldo que tiene la propia cuenta, cabe destacar que cada cuenta tendrá su saldo y puede ser diferente en cada una de las cuentas. */
         private double saldo;
         /** Tasa de Interés de la Cuenta. Es la tasa de interés que tiene, depende del tipo de la cuenta y se realiza de forma automática. */
@@ -54,12 +55,11 @@ public class Cuenta {
     /// ------------------------------------------------ ///
     
     /** Constructor Paramétrico. Crea un objeto previa inserción de todos los parámetros o atributos requeridos para poder realizar todo el proceso de creación.*/
-    public Cuenta(String numeroIdentificacionParcial, TipoCuenta tipoCuentaBancaria, boolean estadoCuenta, String fechaAperturaCuenta, double saldo, boolean indicadorIngresoSalario){
+    public Cuenta(String numeroIdentificacionParcial, TipoCuenta tipoCuentaBancaria, boolean estadoCuenta, Date fechaAperturaCuenta, double saldo, boolean indicadorIngresoSalario){
         if(numeroIdentificacionParcial.length() == 10){
             this.numeroIdentificacionParcial = numeroIdentificacionParcial;
             this.numeroIdentificacionCompleto = "ES25 4769 7891 36 " + numeroIdentificacionParcial;
         }
-        
         if(tipoCuentaBancaria == TipoCuenta.CORRIENTE){
             this.tipoCuentaBancaria = tipoCuentaBancaria;
             this.tasaInteresCuenta = TASAINTERESCUENTACORRIENTE;
@@ -76,26 +76,19 @@ public class Cuenta {
             this.tipoCuentaBancaria = tipoCuentaBancaria;
             this.tasaInteresCuenta = TASAINTERESCUENTAREMUNERADA;
         }
-        
         this.estadoCuenta = estadoCuenta;
-        
-        if(fechaAperturaCuenta.length() == 10){
-            this.fechaAperturaCuenta = fechaAperturaCuenta;
-        }
-        
+        this.fechaAperturaCuenta = fechaAperturaCuenta;
         this.saldo = saldo;
         this.saldoTotal +=+ saldo;
-        
         if(true/*comprobar que no se encuentra activo en otro*/){
            this.indicadorIngresoSalario = indicadorIngresoSalario;
         }
-        
         numeroCuentasBancariasTotales++;
     }
             
     /** Constructor Vacío. Crea un objeto estableciéndole valores por defecto, no requiere de la introducción de ningún parámetro.*/
     public Cuenta(){
-        this("0000000000", TipoCuenta.POR_DETERMINAR, false, "14-10-2024", 0, false);
+        this("0000000000", TipoCuenta.POR_DETERMINAR, false, new Date(2024, 12, 31), 0, false);
     }
 
     /** Constructor Copia. Crea una copia de un objeto Cuenta, es decir, crea un objeto con los mismos valores que el objeto que se toma como plantilla. */
@@ -136,8 +129,8 @@ public class Cuenta {
     public void setEstadoCuenta(boolean estadoCuenta){
         this.estadoCuenta = estadoCuenta;
     }
-    public void setFechaAperturaCuenta(String fechaAperturaCuenta){
-        // [POR DETERMINAR]
+    public void setFechaAperturaCuenta(Date fechaAperturaCuenta){
+        this.fechaAperturaCuenta = fechaAperturaCuenta;
     }
     public void setSaldo(double saldo){
         this.saldo = saldo;
@@ -156,7 +149,7 @@ public class Cuenta {
     public boolean getEstadoCuenta(){
         return estadoCuenta;
     }
-    public String getFechaAperturaCuenta(){
+    public Date getFechaAperturaCuenta(){
         return fechaAperturaCuenta;
     }
     public double getSaldo(){
@@ -176,5 +169,5 @@ public class Cuenta {
     }
     
     // Otros Métodos
-     
+    
 }

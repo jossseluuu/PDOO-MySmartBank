@@ -4,6 +4,7 @@
 // 
 
 package modelos;
+import java.util.Date;
 
 /**
  * @author josel
@@ -23,30 +24,30 @@ public class Tarjeta {
         /** Numero Máximo de Tarjetas. Número máximo de tarjetas que un cliente puede tener en su propiedad, este número podrá ser modificable. */
         private static int numeroMaximoTarjetas = 0;
         /** Número Maximo de Fallo de Autenticaciones. Es el número máximo de veces que puede fallar la autenticación antes de ser bloqueada la tarjeta. */
-        private int numeroMaximoFalloAutenticacion = 3; // Numero Entero modificable que establecerá el numero de fallos de autenticación.
+        private int numeroMaximoFalloAutenticacion = 3;
 
     // Atributos de Instancia
         /** Numero de la Tarjta. Es una cadena de caracteres que debe de encontrarse en el siguiente formato: "XXXX XXXX XXXX XXXX" */
         private String numeroTarjeta;
         /** Fecha de Expiracion de la Tarjeta. Es la fecha en la que la tarjeta pasará a un estado de Vencido, [POR DETERMINAR] */
-        private String fechaExpiracion;
+        private Date fechaExpiracion;
         /** Numero CVV. Es uno de los número de verificacion de la tarjeta, puede ser modificable en casos muy concretos, pero siempre debe encontrarse entre 1 y 999 */
         private int numeroCVV;
         /** Estado de la Tarjeta. Es uno de los estados que se encuentran predefinidos en EstadoTarjeta.java, estos estados podran causar acciones. */
         private EstadoTarjeta estadoTarjeta; // Uno de los estados predefinidos en el enum TipoCuenta
-    
+        /** Tipo de Tarjeta Bancaria. Indica si la tarjeta bancaria en cuestión es de tipo virtual o física. */
+        private TiposTarjetas tipoTarjetaBancaria;
+        
     /// ------------------------------------------------ ///
     ///            Constructores de la Clase             ///
     /// ------------------------------------------------ ///
     
     /** Constructor Paramétrico.  Crea un objeto previa inserción de todos los parámetros o atributos requeridos para poder realizar todo el proceso de creación. */
-    public Tarjeta(String numeroTarjeta, String fechaExpiracion, int numeroCVV, EstadoTarjeta estadoTarjeta){
+    public Tarjeta(String numeroTarjeta, Date fechaExpiracion, int numeroCVV, EstadoTarjeta estadoTarjeta){
         if(numeroTarjeta.length() >= 1 && numeroTarjeta.length() <= 19){
             this.numeroTarjeta = numeroTarjeta;
         }
-        if(fechaExpiracion.length() >= 1 && fechaExpiracion.length() <= 10){
-            this.fechaExpiracion = fechaExpiracion;
-        }
+        this.fechaExpiracion = fechaExpiracion;
         if(numeroCVV % 100 == 0){
             this.numeroCVV = numeroCVV;
         }
@@ -55,7 +56,7 @@ public class Tarjeta {
 
     /** Constructor Vacío. Crea un objeto estableciéndole valores por defecto, no requiere de la introducción de ningún parámetro.*/
     public Tarjeta(){
-        this("0000 0000 0000 0000", "+ 1 año", 0, EstadoTarjeta.SUSPENDIDA);
+        this("0000 0000 0000 0000", new Date(2024, 12, 31), 0, EstadoTarjeta.SUSPENDIDA);
     }
 
     /** Constructor Copia. Crea una copia de un objeto Cuenta, es decir, crea un objeto con los mismos valores que el objeto que se toma como plantilla. */
@@ -76,8 +77,8 @@ public class Tarjeta {
             this.numeroTarjeta = "XXXX XXXX XXXX XXXX";
         }
     }
-    public void setFechaExpiracion(String fechaExpiracion){
-        // [POR DETERMINAR]
+    public void setFechaExpiracion(Date fechaExpiracion){
+        this.fechaExpiracion = fechaExpiracion;
     }
     public void setNumeroCVV(int numeroCVV){
         if(numeroCVV >= 1 && numeroCVV <= 999){
@@ -96,7 +97,7 @@ public class Tarjeta {
     public String getNumeroTarjeta(){
         return numeroTarjeta;
     }
-    public String getFechaExpiracion(){
+    public Date getFechaExpiracion(){
         return fechaExpiracion;
     }
     public int getNumeroCVV(){
@@ -113,5 +114,5 @@ public class Tarjeta {
     }
     
     // Otros Métodos
-     
+
 }
