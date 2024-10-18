@@ -125,7 +125,7 @@ public class TarjetaVirtual {
     // Método toString
     @Override
     public String toString() {
-        return "TarjetaVirtual{" + "dinamicoCVV='" + dinamicoCVV + '\'' + ", expiracionTemporal='" + numeroIdentificacionParcial + '\'' + ", fechaExpiracion=" + fechaExpiracion + '\'' + ", limitadorTransaccion=" + limitadorTransaccion + '\'' + ", cantidadLimite=" + cantidadLimite + '\'' + ", autenticacionMultifactor=" + autenticacionMultifactor + '\'' + ", tipoAutenticacionMultifactor=" + tipoAutenticacionMultifactor + '\'' + ", estadoAutenticacionMultifactor=" + estadoAutenticacionMultifactor + '}';
+        return "TarjetaVirtual{" + "dinamicoCVV='" + dinamicoCVV + '\'' + ", expiracionTemporal='" + expiracionTemporal + '\'' + ", fechaExpiracion=" + fechaExpiracion + '\'' + ", limitadorTransaccion=" + limitadorTransaccion + '\'' + ", cantidadLimite=" + cantidadLimite + '\'' + ", autenticacionMultifactor=" + autenticacionMultifactor + '\'' + ", tipoAutenticacionMultifactor=" + tipoAutenticacionMultifactor + '\'' + ", estadoAutenticacionMultifactor=" + estadoAutenticacionMultifactor + '}';
     }
 
     // Otros Métodos
