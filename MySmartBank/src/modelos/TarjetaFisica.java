@@ -6,7 +6,8 @@ package modelos;
 
 /**
  * @author josel
- */
+ * @version 1.0 (Update: 21.10.2024[NO TERMINADA LA UPDATE])
+ */ 
 
 public class TarjetaFisica {
         

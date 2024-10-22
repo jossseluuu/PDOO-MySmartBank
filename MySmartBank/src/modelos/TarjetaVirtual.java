@@ -3,11 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package modelos;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * @author josel
- */
+ * @version 1.0 (Update: 21.10.2024[NO TERMINADA LA UPDATE])
+ */ 
 
 public class TarjetaVirtual {
     
@@ -27,7 +28,7 @@ public class TarjetaVirtual {
         /** Indicador de Expiración Temporal de la Tarjeta. */
         private boolean expiracionTemporal;
         /** Fecha de Expiracion de la Tarjeta. */
-        private Date fechaExpiracion;
+        private LocalDate fechaExpiracion;
         /** Indicador de Límite de Transacción. */
         private boolean limitadorTransaccion;
         /** Límite de la Transacción. */
@@ -45,7 +46,7 @@ public class TarjetaVirtual {
     /// ------------------------------------------------ ///
     
     /** Constructor Paramétrico.  Crea un objeto previa inserción de todos los parámetros o atributos requeridos para poder realizar todo el proceso de creación. */
-    public TarjetaVirtual(boolean dinamicoCVV, boolean expiracionTemporal, Date fechaExpiracion, boolean limitadorTransaccion, double cantidadLimite, boolean autenticacionMultifactor, String tipoAutenticacionMultifactor, boolean estadoAutenticacionMultifactor){
+    public TarjetaVirtual(boolean dinamicoCVV, boolean expiracionTemporal, LocalDate fechaExpiracion, boolean limitadorTransaccion, double cantidadLimite, boolean autenticacionMultifactor, String tipoAutenticacionMultifactor, boolean estadoAutenticacionMultifactor){
         this.dinamicoCVV = dinamicoCVV;
         this.expiracionTemporal = expiracionTemporal;
         this.fechaExpiracion = fechaExpiracion;
@@ -58,7 +59,7 @@ public class TarjetaVirtual {
 
     /** Constructor Vacío. Crea un objeto estableciéndole valores por defecto, no requiere de la introducción de ningún parámetro.*/
     public TarjetaVirtual(){
-        this(false, false, new Date(), false, 0, false, "Ninguna", false);
+        this(false, false, LocalDate.of(2024, 12, 31), false, 0, false, "Ninguna", false);
     }
     
     /** Constructor Copia. Crea una copia de un objeto Cuenta, es decir, crea un objeto con los mismos valores que el objeto que se toma como plantilla. */
@@ -74,7 +75,7 @@ public class TarjetaVirtual {
     public void setDinamicoCVV(boolean dinamicoCVV){
         this.dinamicoCVV = dinamicoCVV;
     }
-    public void setExpiracionTemporal(boolean expiracionTemporal, Date fechaExpiracion){
+    public void setExpiracionTemporal(boolean expiracionTemporal, LocalDate fechaExpiracion){
         this.expiracionTemporal = expiracionTemporal;
         if(expiracionTemporal == true){
             this.fechaExpiracion = fechaExpiracion;
@@ -103,7 +104,7 @@ public class TarjetaVirtual {
     public boolean getExpiracionTemporal(){
         return expiracionTemporal;
     }
-    public Date geFechaExpiracion(){
+    public LocalDate geFechaExpiracion(){
         return fechaExpiracion;
     }
     public boolean getLimitadorTransacción(){

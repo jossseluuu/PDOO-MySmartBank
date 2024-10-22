@@ -5,15 +5,16 @@
 
 package modelos;
 
-/// 
-/// @author josel
-/// @brief Diferentes estados de las cuentas bancarias, se establece como por defecto la denominación "SUSPENDIDA".
-/// 
+/**
+ * @author josel
+ * @version 1.0 (Update: 21.10.2024)
+ * @brief Son diferentes estados en los que podemos encontrar nuestros objetos tarjeta. La denominación establecida por defecto es "SUSPENDIDA".
+ */ 
 
 public enum EstadoTarjeta {
-    ACTIVADA,
-    BLOQUEADA,
     SUSPENDIDA,
+    BLOQUEADA,
     CANCELADA,
-    VENCIDA
+    VENCIDA,
+    ACTIVADA
 }
