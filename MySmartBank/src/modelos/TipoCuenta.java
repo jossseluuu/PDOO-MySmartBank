@@ -5,10 +5,11 @@
 
 package modelos;
 
-/// 
-/// @author josel
-/// @brief Diferentes tipos de cuentas bancarias, se establece como TipoCuenta por defecto la denominada "POR_DETERMINAR".
-/// 
+/**
+ * @author josel
+ * @version 1.0 (Update: 21.10.2024[NO TERMINADA LA UPDATE])
+ * @brief Diferentes tipos de cuentas bancarias existentes, se establece por defecto de TipoCuenta la denominada "POR_DETERMINAR".
+ */ 
 
 public enum TipoCuenta {
     CORRIENTE,
